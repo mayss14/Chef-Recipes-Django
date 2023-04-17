@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Index</title>
+     {% load bootstrap5 %}
+     {% bootstrap_css %}
+     {% bootstrap_javascript %}
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 text-light fs-5 ">
+  <div class="container-fluid">
+    <a class="navbar-brand  mx-3 brand" href="#">
+         <img src="{% static 'images/chef.png' %}" alt="" width="70" height="64" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-3">
+         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#cards">Recipes</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="#">About us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Register
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Log In</a></li>
+            <li><a class="dropdown-item" href="#">Sign Up </a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+
+    </div>
+  </div>
+
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light">
+     <div class="col-lg-6 col-sm-12">
+       <button class="btn btn-danger p-3 text-center" style="margin-left:340px;margin-top:100px"> Bon Appetit  </button>
+       <h2 class="text-center text m-5">{{ recipe.name }} </h2>
+       <p class="text-center fw-bold"> Ingredients </p>
+       <div class="container">
+           {% for i in recipe.ingredients %}
+            <p class="text-center fs-5 fw-light p-1">
+              {{ i }}
+            </p>
+
+           {% endfor %}
+       </div>
+       <a href="{% url 'maincourse' %}" type="button" class="btn  btn-outline-dark p-3 w-25 text-center" style="margin:100px 0px 30px 300px"> Back </a>
+     </div>
+    <div class="col-lg-6 col-sm-12">
+        <img src="{{ recipe.image }}" alt="..." class="w-100 h-100">
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+
+
+.figure
+{ position: relative;
+    display: inline-block;
+    max-width: 60%;
+    float: left;
+}
+
+.par
+{
+ font-weight: lighter;
+ font-size:25px;
+
+}
+.top-banner{
+  width:100%;
+  background: url('../images/img1.jpg') no-repeat center;
+  background-size:cover;
+  padding : 130px;
+}
+
+.top{
+  width:100%;
+  background: url('../images/img2.jpg') no-repeat center;
+  background-size:cover;
+  padding : 130px;
+}
+
+.brand
+{
+  font-size: 30px;
+  font-family: 'Playfair Display', serif;
+}
+.text
+{
+  font-family: 'Playfair Display', serif;
+  font-size: 55px;
+
+}
+
+.box
+{
+ background-color: white;
+ border-radius: 25px;
+ padding: 30px;
+}
+
+.cardbox{
+    border-radius: 2.5em;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+}
