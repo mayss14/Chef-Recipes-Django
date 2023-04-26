@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    {% load bootstrap5 %}
+     {% bootstrap_css %}
+     {% bootstrap_javascript %}
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="icon" href="{% static 'images/chef2.png' %}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 text-light fs-4 ">
+  <div class="container-fluid">
+    <a class="navbar-brand  mx-3 brand" href="#">
+         <img src="{% static 'images/chef.png' %}" alt="" width="70" height="64" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-3">
+          <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Recipes categories
+          </a>
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'maincourse' %}">Main Course</a></li>
+            <li><a class="dropdown-item"href="{% url 'dessert' %}"> Dessert </a></li>
+              <li><a class="dropdown-item" href="{% url 'sideDish' %}">Side Dishes  </a></li>
+
+          </ul>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link active" href="#">About us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Register
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Log In</a></li>
+            <li><a class="dropdown-item" href="#">Sign Up </a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+
+</nav>
+ <div class="container-fluid px-0 top-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-12  mt-5 box">
+            <h1 class="text text-center">DELECIOUS RECIPES </h1>
+          </div>
+        </div>
+      </div>
+ </div>
+<div class="container-fluid px-0 m-4">
+    <div class="row">
+        <div class="col-lg-7 col-sm-12 m-auto d-block">
+            <p class="par cardbox m-1 p-5 ">
+                <b> About Us </b>
+                <br> <br>
+                Welcome to <b> Chef Recipes</b>! We're a team of food enthusiasts who love nothing more than cooking, baking, and sharing our favorite recipes with the world.
+                <br> <br> Whether you're looking for a quick weeknight dinner idea or an impressive dessert to wow your guests, we've got you covered.<br>
+                At <b> Chef Recipes</b> , we believe that food is more than just fuel; it's a way to connect with others and create memories that last a lifetime.
+                We're passionate about exploring different cuisines and experimenting with new flavors and techniques, and we're always on the lookout for new inspiration.
+                 <br> <br>
+
+
+                We hope that our website inspires you to get creative in the kitchen and try new things. We're always adding new recipes,
+                so be sure to check back often and follow us on social media to stay up-to-date on our latest culinary adventures.
+                <br> <br>
+                <b> Thank you for visiting Chef Recipes – we're so glad you're here! </b>
+            </p>
+
+        </div>
+        <div class="col-lg col-sm-12 p-3 ">
+              <img src="{% static 'images/r1.jpg' %}" alt="" width="270" height="264" >
+              <img src="{% static 'images/r2.jpg' %}" alt="" width="300" height="264" >
+             <img src="{% static 'images/r3.jpg' %}" alt="" width="270" height="264" >
+              <img src="{% static 'images/r4.jpg' %}" alt="" width="300" height="264"  >
+              <img src="{% static 'images/r5.jpg' %}" alt="" width="570" height="294">
+                 </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+
+</body>
+</html>

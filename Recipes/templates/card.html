@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Chef Recipes</title>
      {% load bootstrap5 %}
      {% bootstrap_css %}
      {% bootstrap_javascript %}
@@ -12,11 +12,12 @@
      <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="icon" href="{% static 'images/chef2.png' %}">
 
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 text-light fs-5 ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 text-light fs-4 ">
   <div class="container-fluid">
     <a class="navbar-brand  mx-3 brand" href="#">
          <img src="{% static 'images/chef.png' %}" alt="" width="70" height="64" class="d-inline-block align-text-top">
@@ -55,8 +56,11 @@
 
 <div class="container-fluid">
   <div class="row bg-light">
-     <div class="col-lg-6 col-sm-12">
-       <button class="btn btn-danger p-3 text-center" style="margin-left:340px;margin-top:100px"> Bon Appetit  </button>
+     <div class="col-lg-6 col-sm-12 ">
+         <div class="d-flex justify-content-center p-4">
+              <button class="btn btn-danger p-3 " > Bon Appetit  </button>
+         </div>
+
        <h2 class="text-center text m-5">{{ recipe.name }} </h2>
        <p class="text-center fw-bold"> Ingredients </p>
        <div class="container">
@@ -64,19 +68,78 @@
             <p class="text-center fs-5 fw-light p-1">
               {{ i }}
             </p>
-
            {% endfor %}
        </div>
-       <a href="{% url 'maincourse' %}" type="button" class="btn  btn-outline-dark p-3 w-25 text-center" style="margin:100px 0px 30px 300px"> Back </a>
+         <div class="row d-flex justify-content-center pt-5">
+               <button  class="btn  btn-outline-dark p-3 h-25 mx-2 w-25 text-centercol-lg-4 col-sm-12" onclick="history.back()">Go Back</button>
+                <button  class="btn  btn-outline-dark p-3 h-25 w-25 text-center col-lg-4 col-sm-12 "data-bs-toggle="modal" data-bs-target="#exampleModal">Comment & Rate</button>
+         </div>
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Comment and Rate Recipe </h1>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body m-3">
+            <h4 class="fw-lighter p-3"> We are So glad to hear from you &#x1F603; !</h4>
+          <form>
+              <div class="mb-3">
+              <label for="mssg" class="form-label fs-4 fw-bold">Comment :</label>
+              <textarea class="form-control" id="mssg" rows="4"></textarea>
+          </div>
+              <div class="form-group row">
+                         <label  class="form-label fs-4 fw-bold">Rate  :</label>
+                            <div class="row col-12 col-sm-10 p-1 offset-2">
+                                <div class="form-check col-2">
+                                    <input class="form-check-input" type="radio" id="nbg" name="option">
+                                    <label class="form-check-label" for="nbg">1</label>
+                                </div>
+
+                                <div class="form-check col-2">
+                                    <input class="form-check-input" type="radio" id="nbg" name="option">
+                                    <label class="form-check-label" for="nbg">2</label>
+                                </div>
+
+                                <div class="form-check col-2">
+                                    <input class="form-check-input" type="radio" id="nbg" name="option">
+                                    <label class="form-check-label" for="nbg">3</label>
+                                </div>
+
+                                <div class="form-check col-2">
+                                    <input class="form-check-input" type="radio" id="nbg" name="option">
+                                    <label class="form-check-label" for="nbg">4</label>
+                                </div>
+
+                                <div class="form-check col-2">
+                                    <input class="form-check-input" type="radio" id="nbg" name="option">
+                                    <label class="form-check-label" for="nbg">5</label>
+                                </div>
+                            </div>
+
+                        </div>
+          </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info">Send Feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
      </div>
     <div class="col-lg-6 col-sm-12">
-        <img src="{{ recipe.image }}" alt="..." class="w-100 h-100">
+        <img src="{{ recipe.image }}" alt="..." class="w-100 h-100 cardbox">
 
     </div>
 
   </div>
 
-
+</div>
 
 </div>
 
