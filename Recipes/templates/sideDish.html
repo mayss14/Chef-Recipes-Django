@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Chef Recipes</title>
      {% load bootstrap5 %}
      {% bootstrap_css %}
      {% bootstrap_javascript %}
@@ -12,11 +12,13 @@
      <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="icon" href="{% static 'images/chef2.png' %}">
 
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 text-light fs-5 ">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 text-light fs-4 fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand  mx-3 brand" href="#">
          <img src="{% static 'images/chef.png' %}" alt="" width="70" height="64" class="d-inline-block align-text-top">
@@ -27,13 +29,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item mx-3">
-         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+         <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#cards">Recipes</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Recipes categories
+          </a>
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item " href="{% url 'maincourse' %}">Main Course</a></li>
+            <li><a class="dropdown-item" href="{% url 'dessert' %}"> Dessert </a></li>
+              <li><a class="dropdown-item active" href="{% url 'sideDish' %}">Side Dishes  </a></li>
+
+          </ul>
         </li>
            <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+          <a class="nav-link" href="{% url 'aboutus' %}">About us</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,26 +54,34 @@
             <li><a class="dropdown-item" href="#">Sign Up </a></li>
           </ul>
         </li>
-
       </ul>
-
-
     </div>
   </div>
-
 </nav>
-      <div class="container-fluid top-banner">
+<div class="container-fluid top-banner">
         <div class="row ">
-          <div class="col-7"  >
-            <h1 class="text-center bg-light text" style="box-shadow: 0 5px 10px rgba(0,0,0,.2);background-color: white;font-size:36px; padding:30px; margin-top:-130px">Welcome to the most delecious Side Dishes </h1>
+          <div class="col-lg-7 col-sm-12">
+             <h1 class="text-center bg-light text"
+                style="box-shadow: 0 5px 10px rgba(0,0,0,.2);background-color: white;font-size:36px; padding:40px;">
+                 Welcome to the most delecious Side Dishes </h1>
           </div>
-            <form class="d-flex col-5 offset-4 mt-3">
-                <input class="form-control me-3 p-3 " type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-info w-25" type="submit" name="keyword">Search</button>
-            </form>
+            <div class="col-lg-6 offset-lg-3 col-sm-12">
+                 <form action = "{% url 'search' categorie='sideDish' %}" style="display:flex;justify-content:center;margin-top:50px;">
+                       <select name ="keywords" class="form-select p-4" style="border-radius:30px;"  >
+                                <option selected>Select Ingredient/Recipe</option>
+                              {% for  i in keywords %}
+                                 <option value={{i}}>{{i}}</option>
+                              {% endfor %}
+                        </select>
+                    <button type="submit" value="Submit" class="btn btn-warning  w-25  p-2 h-25 mt-3 m-3"> <i class="fas fa-search" > </i> Search </button>
+
+                </form>
+            </div>
         </div>
       </div>
-
+<div class="text-center m-4">
+    <h1 class="fw-light p-3">Your Search Results  &#128071; : </h1>
+</div>
 <div class="container-fluid" id="cards">
     <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 100px">
@@ -71,9 +89,9 @@
                   <div class="col-xlg-3 col-sm-12 p-2 ">
                         <div class="card cardbox  w-100" >
                           <img src="{{ i.image }}" class="card-img-top" alt="...">
-                                  <div class="card-body text-center">
+                                  <div class="card-body title text-center">
                                        <h5 class="card-title text-center bg-light fw-lighter p-3">{{i.name}}</h5>
-                                     <a href="" class="btn btn-outline-warning me-3 px-4" id="bt1">View</a>
+                                     <a href="{% url 'cardDetail' categorie=keyword id=i.id %}" class="btn btn-outline-warning me-3 px-4" id="bt1">View</a>
                                     <a href="" class="btn btn-outline-warning me-2 " id="bt2">Comment</a>
                                     <a href="" class="btn btn-outline-warning me-3 px-4 " id="bt3">Rate </a>
                                   </div>
@@ -86,7 +104,7 @@
     </div>
 
 </div>
-
+{% include 'footer.html' %}
 
 
 

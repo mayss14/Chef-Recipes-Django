@@ -11,14 +11,14 @@
 .par
 {
  font-weight: lighter;
- font-size:25px;
+ font-size:21px;
 
 }
 .top-banner{
   width:100%;
   background: url('../images/img1.jpg') no-repeat center;
   background-size:cover;
-  padding : 130px;
+  padding: 70px;
 }
 
 .top{
@@ -39,6 +39,11 @@
   font-size: 55px;
 
 }
+#mssg
+{
+  resize : none;
+}
+
 
 .box
 {
@@ -52,3 +57,5 @@
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
 
 }
+
+
