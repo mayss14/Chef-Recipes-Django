@@ -34,15 +34,16 @@
           <a class="nav-link" href="#cards">Recipes</a>
         </li>
            <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+                         <a class="nav-link" href="{% url 'aboutus' %}">About us</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Register
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Log In</a></li>
-            <li><a class="dropdown-item" href="#">Sign Up </a></li>
+           <li><a class="dropdown-item" href="{% url 'log' %}">Log In</a></li>
+            <li><a class="dropdown-item" href="{% url 'signup' %}">Sign Up </a></li>
+              <li><a class="dropdown-item" href="{% url 'log_out' %}">Log out </a></li>
           </ul>
         </li>
 
@@ -78,54 +79,58 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Comment and Rate Recipe </h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Comment and Rate Recipe {{recipe.name}}</h1>
 
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body m-3">
             <h4 class="fw-lighter p-3"> We are So glad to hear from you &#x1F603; !</h4>
-          <form>
+          <form method="post" action="{% url 'rate'%}">
+              {% csrf_token %}
               <div class="mb-3">
+                  <input type="text" name="recipe" value="{{recipe.name}}">
               <label for="mssg" class="form-label fs-4 fw-bold">Comment :</label>
-              <textarea class="form-control" id="mssg" rows="4"></textarea>
+              <textarea class="form-control" id="mssg" name="mssg" rows="4"></textarea>
           </div>
               <div class="form-group row">
                          <label  class="form-label fs-4 fw-bold">Rate  :</label>
+
                             <div class="row col-12 col-sm-10 p-1 offset-2">
                                 <div class="form-check col-2">
-                                    <input class="form-check-input" type="radio" id="nbg" name="option">
-                                    <label class="form-check-label" for="nbg">1</label>
+                                    <input class="form-check-input" type="radio" id="chx" name="chx" value="1">
+                                    <label class="form-check-label" for="chx">1</label>
                                 </div>
 
                                 <div class="form-check col-2">
-                                    <input class="form-check-input" type="radio" id="nbg" name="option">
-                                    <label class="form-check-label" for="nbg">2</label>
+                                    <input class="form-check-input" type="radio" id="chx" name="chx" value="2">
+                                    <label class="form-check-label" for="chx">2</label>
                                 </div>
 
                                 <div class="form-check col-2">
-                                    <input class="form-check-input" type="radio" id="nbg" name="option">
-                                    <label class="form-check-label" for="nbg">3</label>
+                                    <input class="form-check-input" type="radio" id="chx" name="chx" value="3">
+                                    <label class="form-check-label" for="chx">3</label>
                                 </div>
 
                                 <div class="form-check col-2">
-                                    <input class="form-check-input" type="radio" id="nbg" name="option">
-                                    <label class="form-check-label" for="nbg">4</label>
+                                    <input class="form-check-input" type="radio" id="chx" name="chx" value="4">
+                                    <label class="form-check-label" for="chx">4</label>
                                 </div>
 
                                 <div class="form-check col-2">
-                                    <input class="form-check-input" type="radio" id="nbg" name="option">
-                                    <label class="form-check-label" for="nbg">5</label>
+                                    <input class="form-check-input" type="radio" id="chx" name="chx5"  value="5">
+                                    <label class="form-check-label" for="chx">5</label>
                                 </div>
                             </div>
 
                         </div>
+               <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-info">Send Feedback</button>
+      </div>
           </form>
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info">Send Feedback</button>
-      </div>
+
     </div>
   </div>
 </div>
